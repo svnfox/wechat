@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as types from './mutation-types'
+import * as types from './types'
 
 Vue.use(Vuex)
 
@@ -14,11 +14,11 @@ const state = {
 }
 const getters = {}
 const mutations = {
-  [types.SIGN_IN]: (state, data) => {
+  [types.LOGIN]: (state, data) => {
     localStorage.token = data
     state.token = data
   },
-  [types.SIGN_OUT]: (state) => {
+  [types.LOGOUT]: (state) => {
     localStorage.removeItem('token')
     state.token = null
   },
