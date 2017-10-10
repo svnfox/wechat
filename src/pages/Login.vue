@@ -5,39 +5,50 @@
       <div class="login-container">
         <div class="login-content phone">
           <div><i class="iconfont icon-phone"></i></div>
-          <input type="number" v-model="phone" placeholder="请输入手机号"/>
+          <input type="number" v-model="tel" placeholder="请输入手机号"/>
         </div>
         <div class="login-content password">
           <div><i class="iconfont icon-code"></i></div>
-          <input type="number" v-model="code" placeholder="请输入验证码"/>
-          <div>
-            <button :disabled="disabled">{{codename}}</button>
-          </div>
+          <input type="number" v-model="password" placeholder="请输入密码"/>
         </div>
       </div>
     </div>
     <div class="login-btn">
-      <button>绑定</button>
+      <button @click="login">登录</button>
     </div>
   </div>
 </template>
 
 <script>
-  export default{
+  import {LOGIN} from '@/api/url'
+  import md5 from 'md5'
+  import * as types from '@/store/types'
+
+  export default {
     name: 'login',
-    data(){
+    data() {
       return {
-        codename: '获取验证码',
-        nums: 59,
-        disabled: false,
-        phone: '',
-        code: '',
-        eid:''
+        tel: '',
+        password: '',
       }
     },
     methods: {
+      login() {
+        let data = {
+          phone: this.tel,
+          password: md5(this.password),
+          type: 1
+        }
+
+        this.$http.post(LOGIN, data).then(res => {
+          if (res.status === 200) {
+            this.$store.commit(types.LOGIN, res.data.data.session_id)
+            this.$router.replace('/')
+          }
+        })
+      }
     },
-    mounted(){
+    mounted() {
 
     }
   }
@@ -105,7 +116,7 @@
             color: #333;
             border-radius: 0.1rem;
             background-color: #ffc000;
-            &:disabled{
+            &:disabled {
               border: 1px solid #e2e2e2;
               color: #e2e2e2;
               background-color: transparent;

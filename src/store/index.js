@@ -4,26 +4,27 @@ import * as types from './types'
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
-
 const state = {
+  token: localStorage.token ? localStorage.token : '',
   user: {},
-  token: null,
   title: '',
-  token: ''
 }
-const getters = {}
 const mutations = {
   [types.LOGIN]: (state, data) => {
-    localStorage.token = data
     state.token = data
+    localStorage.token = data
   },
   [types.LOGOUT]: (state) => {
-    localStorage.removeItem('token')
     state.token = null
+    localStorage.removeItem('token')
   },
   [types.TITLE]: (state, data) => {
     state.title = data
+  }
+}
+const getters = {
+  [types.TOKEN]: (state) => {
+    return state.token
   }
 }
 const actions = {}
@@ -33,5 +34,5 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-  strict: debug
+  strict: process.env.NODE_ENV !== 'production'
 })
