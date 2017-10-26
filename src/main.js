@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueScroller from 'vue-scroller'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import YDUI from 'vue-ydui'
 import FastClick from 'fastclick'
 import App from './App'
@@ -22,6 +23,7 @@ Vue.component(TimeLineItem.name, TimeLineItem);
 
 //下拉刷新
 Vue.use(VueScroller)
+Vue.use(VueAwesomeSwiper)
 Vue.use(YDUI)
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
