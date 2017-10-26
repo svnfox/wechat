@@ -1,5 +1,6 @@
 const Index              = resolve => require.ensure([], () => resolve(require('@/pages/Index')))
 const Login              = resolve => require.ensure([], () => resolve(require('@/pages/Login')))
+const CertificateQuery   = resolve => require.ensure([], () => resolve(require('@/pages/CertificateQuery')))
 
 const routes = [
 	{
@@ -9,17 +10,7 @@ const routes = [
     meta: {
 	    title: '首页',
       // auth: false
-    },
-    children: [{
-	    path: 'test',
-      name: 'test',
-      meta: {
-	      title: 'tset',
-        auth: false,
-      },
-      component: Login
-    }],
-	  component: Index
+    }
 	},
 	{
 	  path: '/login',
@@ -29,7 +20,16 @@ const routes = [
       auth: false
     },
 	  component: Login
-	}
+	},
+  {
+    path: '/certificateQuery',
+    name: 'CertificateQuery',
+    meta: {
+      title: '产证查询',
+      auth: true,
+    },
+    component: CertificateQuery
+  }
 ]
 
 export default routes

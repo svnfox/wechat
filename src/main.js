@@ -10,10 +10,15 @@ import router from './router'
 import store from './store'
 import 'vue-ydui/dist/ydui.base.css'
 import 'vue-ydui/dist/ydui.flexible'
+
+//按需引入各个UI组件
 import {TabBar, TabBarItem} from 'vue-ydui/dist/lib.rem/tabbar'
+import {TimeLine, TimeLineItem} from 'vue-ydui/dist/lib.rem/timeline';
 
 Vue.component(TabBar.name, TabBar)
 Vue.component(TabBarItem.name, TabBarItem)
+Vue.component(TimeLine.name, TimeLine);
+Vue.component(TimeLineItem.name, TimeLineItem);
 
 //下拉刷新
 Vue.use(VueScroller)
