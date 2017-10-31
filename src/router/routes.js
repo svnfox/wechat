@@ -1,6 +1,7 @@
 const Index              = resolve => require.ensure([], () => resolve(require('@/pages/Index')))
 const Login              = resolve => require.ensure([], () => resolve(require('@/pages/Login')))
 const CertificateQuery   = resolve => require.ensure([], () => resolve(require('@/pages/CertificateQuery')))
+const MPreview           = resolve => require.ensure([], () => resolve(require('@/components/MPreview')))
 
 const routes = [
 	{
@@ -29,6 +30,15 @@ const routes = [
       auth: true,
     },
     component: CertificateQuery
+  },
+  {
+    path: '/MPreview',
+    name: 'MPreview',
+    meta: {
+      title: '相册',
+      auth: false
+    },
+    component: MPreview
   }
 ]
 

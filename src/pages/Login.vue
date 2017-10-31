@@ -61,11 +61,9 @@
     height: 100%;
     background-image: -webkit-radial-gradient(circle, #83bfec 2%, #67abe8 18%, #0163db 60%);
     .header {
-      background-image: url("../assets/login_logo.png");
+      background: url("../assets/login_logo.png") no-repeat top;
       background-size: 2.86rem 2.39rem;
-      background-repeat: no-repeat;
       height: 2.39rem;
-      background-position: top;
       margin-top: 1.06rem;
     }
     .login-form {
